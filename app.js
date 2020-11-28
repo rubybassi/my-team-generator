@@ -16,7 +16,7 @@ const intialPrompt = () => {
   inquirer
     .prompt([
       {
-        type: "choice",
+        type: "list",
         message: "Please select role:",
         name: "role",
         choices: ["Manager", "Engineer", "Intern"],
@@ -39,17 +39,20 @@ const intialPrompt = () => {
     ])
     .then((answers) => {
       if (answers.role === "Manager") {
-        inquirer.prompt().then();
+          console.log('manager is,', answers);
+       // inquirer.prompt().then();
         // add unique quesitions
         // create manager object and push to teams array
         // call next member function
       } else if (answers.role === "Engineer") {
-        inquirer.prompt().then();
+        console.log('engineer is,', answers);
+       // inquirer.prompt().then();
         // add unique quesitions
         // create manager object and push to teams array
         // call next member function
       } else if (answers.role === "Intern") {
-        inquirer.prompt().then();
+        console.log('intern is,', answers);
+       // inquirer.prompt().then();
         // add unique quesitions
         // create manager object and push to teams array
         // call next member function
@@ -58,6 +61,7 @@ const intialPrompt = () => {
   // function for next member. If yes, call intialPrompt. Else render and write html file
 };
 
+intialPrompt();
 //create intial prompt with generic questions,
 //then based on answers.role will need conditonal statements for user-specific role and object creation. need loop for add another (call intial prompt)
 
