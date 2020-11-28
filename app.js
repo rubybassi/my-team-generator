@@ -9,9 +9,60 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+// empty array to hold team member objects
+const teams = [];
+// intial prompt for generic questions
+const intialPrompt = () => {
+  inquirer
+    .prompt([
+      {
+        type: "choice",
+        message: "Please select role:",
+        name: "role",
+        choices: ["Manager", "Engineer", "Intern"],
+      },
+      {
+        type: "input",
+        message: "Please enter name:",
+        name: "name",
+      },
+      {
+        type: "number",
+        message: "Please enter id:",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "Please enter email:",
+        name: "email",
+      },
+    ])
+    .then((answers) => {
+      if (answers.role === "Manager") {
+        inquirer.prompt().then();
+        // add unique quesitions
+        // create manager object and push to teams array
+        // call next member function
+      } else if (answers.role === "Engineer") {
+        inquirer.prompt().then();
+        // add unique quesitions
+        // create manager object and push to teams array
+        // call next member function
+      } else if (answers.role === "Intern") {
+        inquirer.prompt().then();
+        // add unique quesitions
+        // create manager object and push to teams array
+        // call next member function
+      }
+    });
+  // function for next member. If yes, call intialPrompt. Else render and write html file
+};
 
+//create intial prompt with generic questions,
+//then based on answers.role will need conditonal statements for user-specific role and object creation. need loop for add another (call intial prompt)
 
-// Write code to use inquirer to gather information about the development team members,
+// Write code to use inquirer to gather information about the development team members, DONE
+
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 // After the user has input all employees desired, call the `render` function (required
