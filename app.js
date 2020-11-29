@@ -4,7 +4,7 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const emoji = require('node-emoji');
+const emoji = require("node-emoji");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
@@ -13,11 +13,10 @@ const render = require("./lib/htmlRenderer");
 let team = [];
 
 // welcome message log
-const welcomeMessage =
-  `Welcome to My Team Generator! 
+const welcomeMessage = `Welcome to My Team Generator! 
   Please answer the series of prompts.
   Your generated file with be added to the output folder.`;
-console.log(emoji.get('wave'), welcomeMessage);
+console.log(emoji.get("wave"), welcomeMessage);
 
 // intial prompt for generic questions
 const initialPrompt = () => {
@@ -33,37 +32,41 @@ const initialPrompt = () => {
         type: "input",
         message: "Please enter name:",
         name: "name",
-        filter: (answer) => {
-          return answer.toUpperCase();
-        },
+        filter: (answer) => answer.toUpperCase(),
+        validate: (answer) => (!answer ? "please enter a name" : true),
       },
       {
-        type: "number",
+        type: "input",
         message: "Please enter id:",
         name: "id",
+        validate: (answer) => (isNaN(answer) ? "please enter a number" : true),
       },
       {
         type: "input",
         message: "Please enter email:",
         name: "email",
+        validate: (answer) => (!answer ? "please enter an email" : true),
       },
       {
-        type: "number",
-        message: "Please enter your office number:",
+        type: "input",
+        message: "Please enter office number:",
         name: "officeNumber",
         when: (answer) => answer.role === "Manager", // displays if role is manager
+        validate: (answer) => (isNaN(answer) ? "please enter a number" : true), 
       },
       {
         type: "input",
         message: "Please enter github username:",
         name: "github",
         when: (answer) => answer.role === "Engineer", // displays if role is engineer
+        validate: (answer) => (!answer ? "please enter a value" : true),
       },
       {
         type: "input",
         message: "Please enter school:",
         name: "school",
         when: (answer) => answer.role === "Intern", // displays if role is intern
+        validate: (answer) => (!answer ? "please enter a value" : true),
       },
     ])
     .then((answers) => {
@@ -103,7 +106,7 @@ const additionalPrompt = () => {
         // console.log('team', team);
         const html = render(team);
         fs.writeFileSync("./output/team.html", html);
-        console.log(emoji.get('white_check_mark'),"Success! Your team file has been generated");
+        console.log(emoji.get("white_check_mark"),"Success! Your team file has been generated");
       }
     });
 };
