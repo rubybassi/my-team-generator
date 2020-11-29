@@ -10,9 +10,9 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 // empty array to hold team member objects
-const teams = [];
+let team = [];
 // intial prompt for generic questions
-const intialPrompt = () => {
+const initialPrompt = () => {
   inquirer
     .prompt([
       {
@@ -40,40 +40,58 @@ const intialPrompt = () => {
         type: "number",
         message: "Please enter your office number:",
         name: "officeNumber",
-        when: (answers) => answers.role === "Manager", // displays if role is manager
+        when: (answer) => answer.role === "Manager", // displays if role is manager
       },
       {
         type: "input",
         message: "Please enter github username:",
         name: "github",
-        when: (answers) => answers.role === "Engineer", // displays if role is engineer
+        when: (answer) => answer.role === "Engineer", // displays if role is engineer
       },
       {
         type: "input",
         message: "Please enter school:",
         name: "school",
-        when: (answers) => answers.role === "Intern", // displays if role is intern
+        when: (answer) => answer.role === "Intern", // displays if role is intern
       },
     ])
     .then((answers) => {
       if (answers.role === "Manager") {
-        console.log('manager is,', answers);
-         // create manager object and push to teams array
-        // call next member function
+        // console.log('manager is,', answers);
+        const manager = new Manager(answers.name,answers.id,answers.email,answers.officeNumber);
+        team.push(manager);
+        // console.log('this is teams', team);
+        additionalPrompt();
       } else if (answers.role === "Engineer") {
-        console.log("engineer is,", answers);
-        // create manager object and push to teams array
-        // call next member function
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+        team.push(engineer);
+        additionalPrompt();
       } else if (answers.role === "Intern") {
-        console.log("intern is,", answers);
-        // create manager object and push to teams array
-        // call next member function
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        team.push(intern);
+        additionalPrompt();
       }
     });
   // function for next member. If yes, call intialPrompt. Else render and write html file
 };
 
-intialPrompt();
-//create intial prompt with generic questions,
-//then based on answers.role will need conditonal statements for user-specific role and object creation. need loop for add another (call intial prompt)
+const additionalPrompt = () => {
+  inquirer
+    .prompt([
+      {
+        type: "confirm",
+        message: "Add another team member?",
+        name: "newMember",
+      },
+    ])
+    .then((answer) => {
+      if (answer.newMember) {
+        initialPrompt();
+      } else {
+        console.log('team', team);
+      }
+    }); 
+  };
 
+initialPrompt();
+//need loop for add another (call intial prompt)
