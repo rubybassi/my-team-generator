@@ -31,7 +31,7 @@ Answering promtps in the Node CLI.
 
 This assignment required passing all unit tests to help you build the classes correctly.
 
-![Test Pass Using Jest](/my-team-generator/assets/test.png)
+![Test Pass Using Jest](./assets/test.png)
 
 The outputted HTML webpage displays the team roster with a modern UI using Bootstrap cards and utilities.
 
@@ -40,7 +40,7 @@ The outputted HTML webpage displays the team roster with a modern UI using Boots
 ## Execute
 ```node app.js```
 
-Invoke the team generator application in your command line using the above command.
+Invoke the team generator application in the command line using the above command.
 
 ## Usage
 The application will prompt the user for information about the team manager and then information about the team members. The user can input any number of team members, and they may be a mix of engineers and interns. The generated HTML file will be outputted to the output folder within the repo folder.
