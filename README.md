@@ -25,11 +25,9 @@ A Node CLI that dynamically generates an HTML webpage displaying a team roster f
 
 > Watch a full demo video on my [YouTube channel](https://github.com/rubybassi/my-team-generator)
 
-![mydemo](https://user-images.githubusercontent.com/25780327/100553103-ae38e180-3283-11eb-883a-79c600d20675.gif)
-
 Answering promtps in the Node CLI. 
 
-![Sample](./assets/)
+![mydemo](https://user-images.githubusercontent.com/25780327/100553103-ae38e180-3283-11eb-883a-79c600d20675.gif)
 
 This assignment required passing all unit tests to help you build the classes correctly.
 
@@ -37,7 +35,7 @@ This assignment required passing all unit tests to help you build the classes co
 
 The outputted HTML webpage displays the team roster with a modern UI using Bootstrap cards and utilities.
 
-![Gernerated Web Page]()
+![Sample](./assets/webpage.png)
 
 ## Execute
 ```node app.js```
