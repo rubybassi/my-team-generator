@@ -31,11 +31,11 @@ Answering promtps in the Node CLI.
 
 This assignment required passing all unit tests to help you build the classes correctly.
 
-![Test Pass Using Jest](./assets/npm run test pass.png)
+![Test Pass Using Jest](/my-team-generator/assets/test.png)
 
 The outputted HTML webpage displays the team roster with a modern UI using Bootstrap cards and utilities.
 
-![Gernerated Web Page](./assets/)
+![Gernerated Web Page]()
 
 ## Execute
 ```node app.js```
