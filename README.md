@@ -23,7 +23,7 @@ A Node CLI that dynamically generates an HTML webpage displaying a team roster f
 
 ## Preview
 
-> Watch a full demo video on my [YouTube channel]()
+> Watch a full demo video on my [YouTube channel](https://github.com/rubybassi/my-team-generator)
 
 Answering promtps in the Node CLI. 
 
