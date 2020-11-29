@@ -25,6 +25,8 @@ A Node CLI that dynamically generates an HTML webpage displaying a team roster f
 
 > Watch a full demo video on my [YouTube channel](https://github.com/rubybassi/my-team-generator)
 
+![mydemo](https://user-images.githubusercontent.com/25780327/100553103-ae38e180-3283-11eb-883a-79c600d20675.gif)
+
 Answering promtps in the Node CLI. 
 
 ![Sample](./assets/)
