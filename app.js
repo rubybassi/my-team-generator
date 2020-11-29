@@ -4,13 +4,21 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-
+const emoji = require('node-emoji');
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
 const render = require("./lib/htmlRenderer");
+
 // empty array to hold team member objects
 let team = [];
+
+// welcome message log
+const welcomeMessage =
+  `Welcome to My Team Generator! 
+  Please answer the series of prompts.
+  Your generated file with be added to the output folder.`;
+console.log(emoji.get('wave'), welcomeMessage);
+
 // intial prompt for generic questions
 const initialPrompt = () => {
   inquirer
@@ -25,6 +33,9 @@ const initialPrompt = () => {
         type: "input",
         message: "Please enter name:",
         name: "name",
+        filter: (answer) => {
+          return answer.toUpperCase();
+        },
       },
       {
         type: "number",
@@ -82,6 +93,7 @@ const additionalPrompt = () => {
         type: "confirm",
         message: "Add another team member?",
         name: "newMember",
+        default: false,
       },
     ])
     .then((answer) => {
@@ -91,7 +103,7 @@ const additionalPrompt = () => {
         // console.log('team', team);
         const html = render(team);
         fs.writeFileSync("./output/team.html", html);
-        console.log("team file generated");
+        console.log(emoji.get('white_check_mark'),"Success! Your team file has been generated");
       }
     });
 };
